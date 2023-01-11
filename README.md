@@ -12,7 +12,7 @@ In the following, this is described in detail.
   exported automatically and are available inside the Slurm job.
   
 ## :boom: IMPORTANT :boom:
-This approach requires some manual housekeeping. Since the cache is persisted (per default to `/netscratch/$USER/.cache_slurm`), that needs to be cleaned up from time to time. It is also recommended to remove Conda environments when there are not needed anymore.
+This approach requires some manual housekeeping. Since the cache is persisted (per default to `/netscratch/$USER/.cache_slurm`), that needs to be cleaned up from time to time. It is also recommended to remove Conda environments when they are not needed anymore.
 
 ## Setup the working environment
 

@@ -50,8 +50,7 @@ This approach requires some manual housekeeping. Since the cache is persisted (p
 
 Notes:
 
-- If an environment variables file `.env` is found in the current working directory, all contained variables are
-  exported automatically and are available inside the Slurm job.
+- If an environment variables file `.env` is found in the **current working directory** (this is **not** the `.env` file you have created for the Slurm setup), all contained variables are exported automatically and are available inside the Slurm job.
 - For more details about slurm cluster, please follow
   [this link](http://projects.dfki.uni-kl.de/km-publications/web/ML/core/hpc-doc/).
 

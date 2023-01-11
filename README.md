@@ -29,7 +29,7 @@ This approach requires some manual housekeeping. Since the cache is persisted (p
    2. Activate the environment and install any required python packages
 3. Get this code and cd into it: <br>
    `git clone https://github.com/DFKI-NLP/pegasus-bridle.git && cd pegasus-bridle`
-4. Prepare the environment variable file
+4. Prepare the Slurm setup environment variable file
    1. Copy the [example file](.env.example): `cp .env.example .env`
    2. Adapt `.env` and ensure that the respective paths exist at the host and create them if
       necessary (especially for `HOST_CACHEDIR`)

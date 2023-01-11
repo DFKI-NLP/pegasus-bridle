@@ -17,10 +17,10 @@ This approach requires some manual housekeeping. Since the cache is persisted (p
 ## Setup the working environment
 
 1. Install Miniconda
-   1. cd to `/netscratch/$USER`
-   2. Download the miniconda setup script using the following command: <br>
+   1. Download the miniconda setup script using the following command: <br>
       `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
-   3. Execute the setup script to install miniconda in `/netscratch/$USER/miniconda3` using: `./miniconda.sh` <br>
+   2. Execute the setup script to install miniconda using: `bash ./miniconda.sh` <br>
+      IMPORTANT: It is recommended to use `/netscratch/$USER/miniconda3` as install location. <br>
       Note: If you want to choose another install directory, just adapt the respective environment variable
       `HOST_CONDA_ENVS_DIR` in the `.env` file (see below).
 2. Setup a conda environment

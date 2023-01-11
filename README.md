@@ -1,26 +1,33 @@
 # Training models at the DFKI Slurm GPU Cluster
 
 To train models at the cluster, we first need to set up a respective python environment. Then, we can call a wrapper
-script that will start a Slurm job with a selected Slurm image and execute the command we passed to it within the job.
+script that will start a Slurm job with a selected Enroot image and execute the command we passed to it within the job.
 In the following, this is described in detail.
+
+## Why should you use this setup?
+
+* One time setup of the execution environment.
+* Persistent cache.
+* Environemnt variables contained in an `.env` fiel are automatically available inside the Slurm job.
 
 ## Setup the working environment
 
 1. Install Miniconda
    1. cd to `/netscratch/$USER`
-   2. Download the miniconda setup script using the following command:
+   2. Download the miniconda setup script using the following command: <br>
       `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
-   3. Execute the setup script to install miniconda in `/netscratch/$USER/miniconda3` using: `./miniconda.sh`
+   3. Execute the setup script to install miniconda in `/netscratch/$USER/miniconda3` using: `./miniconda.sh` <br>
       Note: If you want to choose another install directory, just adapt the respective environment variable
       `HOST_CONDA_ENVS_DIR` in the `.env` file (see below).
 2. Setup a conda environment
    1. Create a conda environment, e.g. using: `conda create -n {env} python=3.9` (replace `{env}` with a name of your
       choice)
    2. Activate the environment and install any required python packages
-3. Prepare the environment variable file
-   1. Put this directory anywhere on the GPU cluster and cd into it
-   2. Copy the [example file](.env.example): `cp .env.example .env`
-   3. Adapt `.env` and ensure that the respective paths exist at the host and create them if
+3. Get this code and cd into it: <br>
+   `git clone https://github.com/DFKI-NLP/pegasus-bridle.git && cd pegasus-bridle`
+4. Prepare the environment variable file
+   1. Copy the [example file](.env.example): `cp .env.example .env`
+   2. Adapt `.env` and ensure that the respective paths exist at the host and create them if
       necessary (especially for `HOST_CACHEDIR`)
 
 ## Executing the code
@@ -28,7 +35,7 @@ In the following, this is described in detail.
 1. Activate the conda environment at the host: `conda activate {env}`.<br>
    Note: This is just required to pass the conda environment name to the wrapper script. You can also set a fixed
    name by directly overwriting the environment variable `CONDA_ENV` in the `.env` file (see above).
-2. Run `wrapper.sh` from your project directory and give the python command in the parameters to execute it:
+2. Run `wrapper.sh` from anywhere, e.g. your project directory, and give the python command in the parameters to execute it:
    ```
    bash path/to/wrapper.sh command with arguments
    ```

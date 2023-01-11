@@ -4,12 +4,15 @@ To train models at the cluster, we first need to set up a respective python envi
 script that will start a Slurm job with a selected Enroot image and execute the command we passed to it within the job.
 In the following, this is described in detail.
 
-## Why should you use this setup?
+## Why should I use this setup?
 
 - One time setup of the execution environment.
 - Persistent cache.
 - If an environment variables file `.env` is found in the current working directory, all contained variables are
   exported automatically and are available inside the Slurm job.
+  
+## :boom: IMPORTANT :boom:
+This approach requires some manual housekeeping. Since the cache is persisted (per default to `/netscratch/$USER/.cache_slurm`), that needs to be cleaned up from time to time. It is also recommended to remove Conda environments when there are not needed anymore.
 
 ## Setup the working environment
 

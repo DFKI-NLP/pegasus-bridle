@@ -6,9 +6,10 @@ In the following, this is described in detail.
 
 ## Why should you use this setup?
 
-* One time setup of the execution environment.
-* Persistent cache.
-* Environemnt variables contained in an `.env` fiel are automatically available inside the Slurm job.
+- One time setup of the execution environment.
+- Persistent cache.
+- If an environment variables file `.env` is found in the current working directory, all contained variables are
+  exported automatically and are available inside the Slurm job.
 
 ## Setup the working environment
 

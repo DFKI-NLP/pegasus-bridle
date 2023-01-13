@@ -19,20 +19,22 @@ This approach requires some manual housekeeping. Since the cache is persisted (b
 1. Install Miniconda
    1. Download the miniconda setup script using the following command: <br>
       `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
-   2. Execute the setup script to install miniconda using: `bash ./miniconda.sh` <br>
+   2. Make the setup script executable and install miniconda using: `bash ./miniconda.sh` <br>
       IMPORTANT: It is recommended to use `/netscratch/$USER/miniconda3` as install location. <br>
       Note: If you want to choose another install directory, just adapt the respective environment variable
       `HOST_CONDA_ENVS_DIR` in the `.env` file (see below).
 2. Setup a conda environment
    1. Create a conda environment, e.g. using: `conda create -n {env} python=3.9` (replace `{env}` with a name of your
       choice)
-   2. Activate the environment and install any required python packages
+   2. Either start a [screen session](https://help.ubuntu.com/community/Screen) or make sure you are in bash (type `bash` in terminal)
+   3. Activate the environment and install any required python packages
 3. Get this code and cd into it: <br>
    `git clone https://github.com/DFKI-NLP/pegasus-bridle.git && cd pegasus-bridle`
 4. Prepare the Slurm setup environment variable file
    1. Copy the [example file](.env.example): `cp .env.example .env`
    2. Adapt `.env` and ensure that the respective paths exist at the host and create them if
       necessary (especially for `HOST_CACHEDIR`)
+   3. Make sure the images you are using contains a conda installation.
 
 ## Executing the code
 

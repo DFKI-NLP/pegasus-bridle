@@ -7,7 +7,7 @@ In the following, this is described in detail.
 ## Why should I use this setup?
 
 - One time setup of the execution environment.
-- Persistent cache.
+- Persistent cache. This is useful, for instance, when working with Huggingface to cache models and dataset preprocessing steps.
 - If an environment variables file `.env` is found in the current working directory, all contained variables are
   exported automatically and are available inside the Slurm job.
   

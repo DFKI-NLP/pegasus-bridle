@@ -1,4 +1,4 @@
-# :unicorn: Pegasus Bridle
+# Pegasus Bridle <img src="deadpool-chibi-png_4006177.png" alt="png" style="height: 50px; width: auto"/>
 
 This project contains some scripts to ease the training of models at the DFKI GPU cluster.
 

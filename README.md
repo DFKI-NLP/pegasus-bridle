@@ -47,7 +47,7 @@ This approach requires some manual housekeeping. Since the cache is persisted (b
    name by directly overwriting the environment variable `CONDA_ENV` in the `.env` file (see above).
 2. Run `wrapper.sh` from anywhere, e.g. your project directory, and give the python command in the parameters to execute it:
    ```
-   bash path/to/wrapper.sh command with arguments
+   bash path/to/pegasus-bridle/wrapper.sh command with arguments
    ```
    Example Usage:
    ```

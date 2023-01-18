@@ -1,8 +1,6 @@
-# Training models at the DFKI Slurm GPU Cluster
+# :unicorn: Pegasus Bridle
 
-To train models at the cluster, we first need to set up a respective python environment. Then, we can call a wrapper
-script that will start a Slurm job with a selected Enroot image and execute the command we passed to it within the job.
-In the following, this is described in detail.
+This project contains some scripts to ease the training of models at the DFKI GPU cluster.
 
 ## Why should I use this setup?
 
@@ -13,6 +11,12 @@ In the following, this is described in detail.
   
 ## :boom: IMPORTANT :boom:
 This approach requires some manual housekeeping. Since the cache is persisted (by default to `/netscratch/$USER/.cache_slurm`), that needs to be cleaned up from time to time. It is also recommended to remove Conda environments when they are not needed anymore.
+
+## Overview
+
+To train models at the cluster, we first need to set up a respective python environment. Then, we can call a wrapper
+script that will start a Slurm job with a selected Enroot image and execute the command we passed to it within the job.
+In the following, this is described in detail.
 
 ## Setup the working environment
 

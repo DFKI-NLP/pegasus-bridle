@@ -26,8 +26,12 @@ This approach requires some manual housekeeping. Since the cache is persisted (b
 2. Setup a conda environment
    1. Create a conda environment, e.g. using: `conda create -n {env} python=3.9` (replace `{env}` with a name of your
       choice)
-   2. Either start a [screen session](https://help.ubuntu.com/community/Screen) or make sure you are in bash (type `bash` in terminal)
-   3. Activate the environment and install any required python packages
+   2. Either start a [screen session](https://help.ubuntu.com/community/Screen) or make sure you are in bash (type `bash` in terminal) to make the conda commands available.
+   3. Activate the environment: `conda activate {env}`
+   4. Install any required python packages. We recommend that you use the PyPI cache installed at the cluster as described [here](http://projects.dfki.uni-kl.de/km-publications/web/ML/core/hpc-doc/posts/pypi-cache/), e.g. using:
+      ```
+      pip install --no-cache --index-url http://pypi-cache/index --trusted-host pypi-cache <package>
+      ```
 3. Get this code and cd into it: <br>
    `git clone https://github.com/DFKI-NLP/pegasus-bridle.git && cd pegasus-bridle`
 4. Prepare the Slurm setup environment variable file

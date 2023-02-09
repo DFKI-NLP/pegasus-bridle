@@ -24,6 +24,9 @@ if [ -f "$ENV_FILE" ]; then
     bash "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE"
 fi
 
+# check wandb and login
+python "$SCRIPT_DIR"/wandb_init.py
+
 ARGS_JOINED=${ARGS[*]}
 echo "execute: $ARGS_JOINED"
 eval $ARGS_JOINED

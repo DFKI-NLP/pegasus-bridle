@@ -24,6 +24,10 @@ if [ -f "$ENV_FILE" ]; then
     bash "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE"
 fi
 
+# Login to Weights & Biases, if the wandb python package is installed
+# and the environment variable WANDB_API_KEY is set.
+python "$SCRIPT_DIR"/wandb_init.py
+
 ARGS_JOINED=${ARGS[*]}
 echo "execute: $ARGS_JOINED"
 eval $ARGS_JOINED

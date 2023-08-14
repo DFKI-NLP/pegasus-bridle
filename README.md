@@ -44,6 +44,11 @@ In the following, this is described in detail.
       necessary (especially for `HOST_CACHEDIR`)
    3. Make sure the images you are using contains a conda installation.
 
+Note: It is also possible to have multiple Slurm setup environment variable files, e.g. one for each of your deep 
+learning projects. In this case, put the content of the `.env` file into a file `.pegasus-bridle.env` that should 
+be located in the directory from where you start the wrapper script (e.g. your project directory). The wrapper 
+script will automatically detect this file and use it instead of the `.env` file in the pegasus-bridle directory.
+
 ## Executing the code
 
 1. Activate the conda environment at the host: `conda activate {env}`.<br>

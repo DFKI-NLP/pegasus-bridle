@@ -27,6 +27,9 @@ In the following, this is described in detail.
       IMPORTANT: It is recommended to use `/netscratch/$USER/miniconda3` as install location. <br>
       Note: If you want to choose another install directory, just adapt the respective environment variable
       `HOST_CONDA_ENVS_DIR` in the `.env` file (see below).
+   3. Switch to the `conda-forge` channel. Because of license restrictions, we have to use `conda-forge` and disable the default conda channel.
+      1. Add conda-forge as the highest priority channel (taken from [here](https://conda-forge.org/docs/user/introduction.html#how-can-i-install-packages-from-conda-forge)): `conda config --add channels conda-forge`
+      2. dsiable the default conda channel: `conda config --remove channels defaults`
 2. Setup a conda environment
    1. Create a conda environment, e.g. using: `conda create -n {env} python=3.9` (replace `{env}` with a name of your
       choice)

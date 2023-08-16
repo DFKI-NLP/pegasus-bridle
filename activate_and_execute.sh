@@ -2,17 +2,25 @@
 
 SCRIPT_DIR=$(dirname $0)
 
-# use first argument as conda environment name
-CONDA_ENV=$1
-shift
-
 # backup arguments and clear them (the source command fails otherwise)
 ARGS=( "$@" )
 shift $#
 
-echo "activate conda environment: $CONDA_ENV"
-source /opt/conda/bin/activate
-conda activate $CONDA_ENV
+# activate conda environment, if the variable is defined
+if [ -n "$CONDA_ENV" ]; then
+    echo "activate conda environment: $CONDA_ENV"
+    source /opt/conda/bin/activate
+    conda activate $CONDA_ENV
+fi
+
+PYTHON_VERSION=$(python --version)
+echo "PYTHON VERSION: $PYTHON_VERSION"
+
+# if the variable PIP_REQUIREMENTS_FILE is defined, install the requirements
+if [ -n "$PIP_REQUIREMENTS_FILE" ]; then
+    echo "install pip requirements from $PIP_REQUIREMENTS_FILE"
+    pip install -r "$PIP_REQUIREMENTS_FILE"
+fi
 
 # check for gpu availability
 python "$SCRIPT_DIR"/check_cuda.py

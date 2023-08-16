@@ -14,11 +14,11 @@ else
 fi
 
 # import and check required environment variables
-. "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE" "CONTAINER_IMAGE" "PARTITION" "RESOURCE_ALLOCATION" "CONTAINER_WORKDIR" "CONTAINER_MOUNTS" "CONDA_ENV"
+. "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE" "CONTAINER_IMAGE" "PARTITION" "RESOURCE_ALLOCATION" "CONTAINER_WORKDIR" "CONTAINER_MOUNTS" "EXPORT"
 
 srun -K -p $PARTITION $RESOURCE_ALLOCATION \
     --container-image="$CONTAINER_IMAGE" \
     --container-workdir="$CONTAINER_WORKDIR" \
     --container-mounts="$CONTAINER_MOUNTS","$SCRIPT_DIR":"$SCRIPT_DIR" \
-    --export="NCCL_SOCKET_IFNAME=bond,NCCL_IB_HCA=mlx5" \
-    bash "$SCRIPT_DIR"/activate_and_execute.sh "$CONDA_ENV" $*
+    --export="$EXPORT" \
+    bash "$SCRIPT_DIR"/activate_and_execute.sh $*

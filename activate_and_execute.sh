@@ -13,6 +13,9 @@ if [ -n "$CONDA_ENV" ]; then
     conda activate $CONDA_ENV
 fi
 
+PYTHON_VERSION=$(python --version)
+echo "PYTHON VERSION: $PYTHON_VERSION"
+
 # if the variable PIP_REQUIREMENTS_FILE is defined, install the requirements
 if [ -n "$PIP_REQUIREMENTS_FILE" ]; then
     echo "install pip requirements from $PIP_REQUIREMENTS_FILE"

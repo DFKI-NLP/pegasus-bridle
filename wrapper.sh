@@ -14,13 +14,12 @@ else
 fi
 
 # import and check required environment variables
-. "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE" "CONTAINER_IMAGE" "PARTITION" "RESOURCE_ALLOCATION" "CONTAINER_WORKDIR" "CONTAINER_MOUNTS" "EXPORT" "MAIL_ADDRESS" "JOB_NAME"
+. "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE" "CONTAINER_IMAGE" "PARTITION" "RESOURCE_ALLOCATION" "CONTAINER_WORKDIR" "CONTAINER_MOUNTS" "EXPORT" "JOB_NAME"
 
 srun -K -p $PARTITION $RESOURCE_ALLOCATION \
     --container-image="$CONTAINER_IMAGE" \
     --container-workdir="$CONTAINER_WORKDIR" \
     --container-mounts="$CONTAINER_MOUNTS","$SCRIPT_DIR":"$SCRIPT_DIR" \
-    --mail-user="$MAIL_ADDRESS" \
     --job-name="$JOB_NAME" \
     --export="$EXPORT" \
     bash "$SCRIPT_DIR"/activate_and_execute.sh $*

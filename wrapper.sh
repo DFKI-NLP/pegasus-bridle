@@ -14,7 +14,7 @@ else
 fi
 
 # import and check required environment variables
-. "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE" "CONTAINER_IMAGE" "PARTITION" "RESOURCE_ALLOCATION" "CONTAINER_WORKDIR" "CONTAINER_MOUNTS" "EXPORT" "JOB_NAME"
+. "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE" "CONTAINER_IMAGE" "PARTITION" "RESOURCE_ALLOCATION" "CONTAINER_WORKDIR" "CONTAINER_MOUNTS" "EXPORT" "JOB_NAME" "MAX_TIME_LIMIT"
 
 srun -K -p $PARTITION $RESOURCE_ALLOCATION \
     --container-image="$CONTAINER_IMAGE" \
@@ -22,4 +22,5 @@ srun -K -p $PARTITION $RESOURCE_ALLOCATION \
     --container-mounts="$CONTAINER_MOUNTS","$SCRIPT_DIR":"$SCRIPT_DIR" \
     --job-name="$JOB_NAME" \
     --export="$EXPORT" \
+    --time="$MAX_TIME_LIMIT" \
     bash "$SCRIPT_DIR"/activate_and_execute.sh $*

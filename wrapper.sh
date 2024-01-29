@@ -21,6 +21,7 @@ srun -K -p $PARTITION $RESOURCE_ALLOCATION \
     --container-workdir="$CONTAINER_WORKDIR" \
     --container-mounts="$CONTAINER_MOUNTS","$SCRIPT_DIR":"$SCRIPT_DIR" \
     --job-name="$JOB_NAME" \
+    --time="$MAX_TIME" \
     --export="$EXPORT" \
     --time="$MAX_TIME_LIMIT" \
     bash "$SCRIPT_DIR"/activate_and_execute.sh $*

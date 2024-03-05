@@ -29,7 +29,7 @@ python "$SCRIPT_DIR"/check_cuda.py
 ENV_FILE=$(pwd)/.env
 if [ -f "$ENV_FILE" ]; then
     echo ".env file found in current directory. load environment variables from $ENV_FILE"
-    bash "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE"
+    source "$SCRIPT_DIR"/import_vars.sh "$ENV_FILE"
 fi
 
 # Login to Weights & Biases, if the wandb python package is installed

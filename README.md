@@ -81,3 +81,10 @@ Notes:
 
 Note: This uses the same environment variables as the wrapper.sh. You may modify them before starting an interactive
 session, especially variables related to resource allocation.
+
+
+## See also
+
+- [Malte's Getting Started Guide](https://github.com/malteos/getting-started/)
+- [Jan's How-to-Pegasus](https://github.com/malteos/getting-started/blob/main/how-to-pegasus.md)
+- [Connect via SSH to a Slurm compute job that runs as Enroot container](https://gist.github.com/malteos/5fe791fe10bb55028a02952d5f394bb3) (for GPU debugging with your IDE)

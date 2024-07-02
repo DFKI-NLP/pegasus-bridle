@@ -6,6 +6,28 @@ SCRIPT_DIR=$(dirname $0)
 ARGS=( "$@" )
 shift $#
 
+if ! command -v conda > /dev/null 2>&1; then
+    echo "Installing conda..."
+    #wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
+    #bash ~/miniconda.sh -b -p $HOME/miniconda
+    # Following https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
+    # Install our public GPG key to trusted store
+    curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
+    install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
+    # Check whether fingerprint is correct (will output an error message otherwise)
+    gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806
+    # Add our Debian repo
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
+    apt update
+    apt install conda
+    source /opt/conda/etc/profile.d/conda.sh
+    conda -V
+    echo "channels:" > /opt/conda/.condarc
+    echo "  - conda-forge" >> /opt/conda/.condarc
+    echo "channel_priority: strict" >> /opt/conda/.condarc
+fi
+
+
 # activate conda environment, if the variable is defined
 if [ -n "$CONDA_ENV" ]; then
     echo "activate conda environment: $CONDA_ENV"

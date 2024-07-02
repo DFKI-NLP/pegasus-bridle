@@ -7,10 +7,8 @@ ARGS=( "$@" )
 shift $#
 
 if ! command -v conda > /dev/null 2>&1; then
-    echo "Installing conda..."
-    #wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
-    #bash ~/miniconda.sh -b -p $HOME/miniconda
     # Following https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
+    echo "Installing conda..."
     # Install our public GPG key to trusted store
     curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
     install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg

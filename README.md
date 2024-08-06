@@ -42,15 +42,18 @@ In the following, this is described in detail.
 3. Get this code and cd into it: <br>
    `git clone https://github.com/DFKI-NLP/pegasus-bridle.git && cd pegasus-bridle`
 4. Prepare the Slurm setup environment variable file
-   1. Copy the [example file](.env.example): `cp .env.example .env`
-   2. Adapt `.env` and ensure that the respective paths exist at the host and create them if
+   1. Create a Slurm setup environment variable file through copying the [example file](.env.example):
+      1. Either `cp .env.example path/to/your/project/.pegasus-bridle.env` (**recommended**). The `.pegasus-bridle.env` file will be used
+      by the wrapper script if it is found in the current working directory of your project. It is possible to create a 
+      `.pegasus-bridle.env` file in each of your projects. This way, you can have different configurations for each project.
+      If the wrapper script detects the `.pegasus-bridle.env` file, it will use it instead of a default `.env` file 
+      in the pegasus-bridle directory (Option 2).
+      2. Or run `cp .env.example .env` in the `pegasus-bridle` directory. The `.env` file will be the default configuration and
+      will be used by the wrapper script, in case no `.pegasus-bridle.env` is detected in the current working directory (Option 1).
+   2. Adapt either the `.pegasus-bridle.env` or the `.env` to your needs and ensure that the respective paths exist at the host and create them if
       necessary (especially for `HOST_CACHEDIR`)
    3. Make sure the images you are using contains a conda installation.
 
-Note: It is also possible to have multiple Slurm setup environment variable files, e.g. one for each of your deep 
-learning projects. In this case, put the content of the `.env` file into a file `.pegasus-bridle.env` that should 
-be located in the directory from where you start the wrapper script (e.g. your project directory). The wrapper 
-script will automatically detect this file and use it instead of the `.env` file in the pegasus-bridle directory.
 
 ## Executing the code
 
@@ -61,7 +64,10 @@ script will automatically detect this file and use it instead of the `.env` file
    ```
    bash path/to/pegasus-bridle/wrapper.sh command with arguments
    ```
-   Example Usage:
+   Example Usage (assuming you cloned the `pegasus-bridle` repository to `/home/$USER/projects`, want to run `src/train.py` in the 
+   current directory and there is either a `.env` file in the pegasus-bridle directory or a `.pegasus-bridle.env` file in 
+   the current working directory):
+
    ```
    bash /home/$USER/projects/pegasus-bridle/wrapper.sh python src/train.py +trainer.fast_dev_run=true
    ```

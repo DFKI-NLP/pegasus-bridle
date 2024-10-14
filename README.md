@@ -41,7 +41,8 @@ In the following, this is described in detail.
       ```
 3. Get this code and cd into it: <br>
    `git clone https://github.com/DFKI-NLP/pegasus-bridle.git && cd pegasus-bridle`
-4. Prepare the Slurm setup environment variable file
+4. Create the cache folder /netscratch/$USER/.cache_slurm if it doesn't exist
+5. Prepare the Slurm setup environment variable file
    1. Create a Slurm setup environment variable file through copying the [example file](.env.example):
       1. Either `cp .env.example path/to/your/project/.pegasus-bridle.env` (**recommended**). The `.pegasus-bridle.env` file will be used
       by the wrapper script if it is found in the current working directory of your project. It is possible to create a 
@@ -50,8 +51,8 @@ In the following, this is described in detail.
       in the pegasus-bridle directory (Option 2).
       2. Or run `cp .env.example .env` in the `pegasus-bridle` directory. The `.env` file will be the default configuration and
       will be used by the wrapper script, in case no `.pegasus-bridle.env` is detected in the current working directory (Option 1).
-   2. Adapt either the `.pegasus-bridle.env` or the `.env` to your needs and ensure that the respective paths exist at the host and create them if
-      necessary (especially for `HOST_CACHEDIR`)
+   2. Adapt either the `.pegasus-bridle.env` or the `.env` to your needs and **ensure that the respective paths exist at the host and create them if
+      necessary (especially for `HOST_CACHEDIR`)**
    3. Make sure the images you are using contains a conda installation.
 
 

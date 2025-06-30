@@ -23,17 +23,20 @@ In the following, this is described in detail.
 1. Install Miniconda
    1. Download the miniconda setup script using the following command: <br>
       `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
-   2. Make the setup script executable and install miniconda using: `bash ./miniconda.sh` <br>
-      IMPORTANT: It is recommended to use `/netscratch/$USER/miniconda3` as install location. <br>
-      Note: If you want to choose another install directory, just adapt the respective environment variable
-      `HOST_CONDA_ENVS_DIR` in the `.env` file (see below).
-   3. Switch to the `conda-forge` channel. Because of license restrictions, we have to use `conda-forge` and disable the default conda channel.
+   2. Install miniconda, accept the terms and conditions, and set the proper installation path. <br>
+      This can be done non-interactively, all in one line, by running bash `./miniconda.sh -b -p /netscratch/$USER/miniconda3`, where `-b` accepts the terms, and `-p <installation-path>` sets the installation path. <br>
+      Alternatively use `bash ./miniconda.sh` for an interactive dialogue in which you get to read and agree to the terms and conditions, as well as setting the installation path.
+   3. Initialise conda by running `<your_path_to_miniconda>/miniconda3/bin/conda init bash`, e.g., <br>
+      `/netscratch/$USER/miniconda3/bin/conda init bash` if you installed in the default location.
+   4. Switch to the `conda-forge` channel. Because of license restrictions, we have to use `conda-forge` and disable the default conda channel.
       1. Add conda-forge as the highest priority channel (taken from [here](https://conda-forge.org/docs/user/introduction.html#how-can-i-install-packages-from-conda-forge)): `conda config --add channels conda-forge`
       2. disable the default conda channel: `conda config --remove channels defaults`
+   5. (OPTIONAL) Set `conda config --set auto_activate_base false` to stop conda from activating the base image for each new shell session. <br>
+      This leads to a **significant speedup** in opening new shell sessions.
 2. Setup a conda environment
    1. Create a conda environment, e.g. using: `conda create -n {env} python=3.9` (replace `{env}` with a name of your
       choice)
-   2. Either start a [screen session](https://help.ubuntu.com/community/Screen) or make sure you are in bash (type `bash` in terminal) to make the conda commands available.
+   2. Either start a [screen](https://help.ubuntu.com/community/Screen) / [tmux](https://github.com/tmux/tmux/wiki) session or make sure you are in bash (type `bash` in terminal) to make the conda commands available.
    3. Activate the environment: `conda activate {env}`
    4. Install any required python packages. We recommend that you use the PyPI cache installed at the cluster as described [here](http://projects.dfki.uni-kl.de/km-publications/web/ML/core/hpc-doc/posts/pypi-cache/), e.g. using:
       ```
